@@ -23,7 +23,7 @@
                 <div class="top">
                     <span>Don't have an account? <a href="#" onclick="register()">Sign Up</a></span>
                     {!! Toastr::message() !!}
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register_user') }}">
                         @csrf
                         <header>Register</header>
                 </div>
@@ -39,12 +39,23 @@
                         id="email" name="email" placeholder="Username or Email" value="{{ old('email') }}" required
                         autocomplete="off">
                     <i class="fas fa-user white-icon"></i>
+                    <div style="color: white;">  
+                    @error('password')
+            <span role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+             </div>
                 </div>
+                
                 <div class="input-box">
                     <input type="password" class="input-field form-control  @error('password') is-invalid @enderror"
                         id="password" name="password" placeholder="Password" required autocomplete="off">
+                        
                     <i class="fas fa-lock white-icon"></i>
+                    
                 </div>
+               
                 <div class="input-box">
                     <input type="password" class="input-field form-control  @error('password') is-invalid @enderror"
                         name="password_confirmation" placeholder="Confirm Password" required autocomplete="off"
@@ -52,7 +63,7 @@
                     <i class="fas fa-lock white-icon"></i>
                 </div>
                 <div class="input-box">
-                    <input type="submit" class="submit" value="Register">
+                    <button type="submit" class="submit" value="Register">Register</button>
                 </div>
                 <div class="two-col">
                     <div class="one">

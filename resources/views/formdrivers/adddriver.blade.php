@@ -23,21 +23,21 @@
                                 <div class="form-group">
                                     <label>Registration_number</label>
                                     <span class="required-field text-danger">*</span>
-                                    <input type="text" class="form-control @error('Registration_number') is-invalid @enderror" id="Registration_number" name="Registration_number" value="{{ old('Registration_number') }}">
+                                    <input type="text" class="form-control @error('registration_number') is-invalid @enderror" id="registration_number" name="registration_number" value="{{ old('registration_Number') }}">
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label>Last_name</label>
                                     <span class="required-field text-danger">*</span>
-                                    <input type="text" class="form-control @error('Last_name') is-invalid @enderror" id="Last_name" Last_name="Last_name" value="{{ old('Last_name') }}">
+                                    <input type="text" class="form-control @error('Last_Name') is-invalid @enderror" id="Last_Name" name="Last_Name" value="{{ old('Last_Name') }}">
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label>First_name</label>
                                     <span class="required-field text-danger">*</span>
-                                    <input type="text" class="form-control @error('First_name') is-invalid @enderror" name="First_name" value="{{ old('First_name') }}">
+                                    <input type="text" class="form-control @error('First_Name') is-invalid @enderror" name="First_Name" value="{{ old('First_Name') }}">
                                 </div>
                             </div>
                         </div>
@@ -80,8 +80,6 @@
                                     <input type="text" class="form-control @error('City') is-invalid @enderror" id="City" name="City" value="{{ old('City') }}">
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label>Date_of_Birth</label>
@@ -92,7 +90,9 @@
                                 </div>
                             </div>
                            
-                            </div>
+                        </div>
+                        <div class="row">
+                        
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label>Marital_Status</label>
@@ -102,12 +102,9 @@
                                         <option value="married" {{ old('Marital_Status') === 'married' ? 'selected' : '' }}>married</option>
                                         <option value="divorced" {{ old('Marital_Status') === 'divorced' ? 'selected' : '' }}>divorced</option>
                                     </select>
-                                </div>
-                            </div>
-                        </div>
-                       
-                            </div>
-                            <div class="col-lg-4">
+                                    </div>
+                                    </div>
+                                <div class="col-lg-4">
                                 <div class="form-group">
                                     <label>Transport</label>
                                     <select class="form-control @error('Transport') is-invalid @enderror" id="Transport" name="Transport">
@@ -119,21 +116,26 @@
                                         <option value="big truck" {{ old('Transport') === 'big truck' ? 'selected' : '' }}>big truck</option>
                                     </select>
                                 </div>
-                            </div>
-            
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-4">
+                                </div> 
+                                <div class="col-lg-4">
                                 <div class="form-group">
                                     <label>Type</label>
                                     <span class="required-field text-danger">*</span>
-                                    <select class="form-control @error('type') is-invalid @enderror" id="type" name="type">
+                                    <select class="form-control @error('Type') is-invalid @enderror" id="Type" name="Type">
                                         <option value="" disabled selected>Select Type</option>
                                         <option value="intern" {{ old('type') === 'intern' ? 'selected' : '' }}>intern</option>
                                         <option value="extern" {{ old('type') === 'extern' ? 'selected' : '' }}>extern</option>
                                     </select>
                                 </div>
                             </div>
+                            </div>
+                            
+                        </div>
+                       
+                            </div>
+                           
+                        <div class="row">
+                            
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label>Date depart</label>
@@ -141,11 +143,9 @@
                                         <input type="text" class="form-control datetimepicker @error('Date_depart') is-invalid @enderror" id="Date_depart" name="Date_depart" value="{{ old('Date_depart') }}">
                                     </div>
                                 </div>
+                               
+                            
                             </div>
-                        </div>
-                    
-                        </div>
-                        <div class="row">
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label>Social_Security</label>
@@ -153,8 +153,7 @@
                                 </div>
                             </div>
                             
-                            
-                            <div class="col-md-4">
+                        <div class="col-md-4">
                                 <div class="form-group">
                                     <label>File Upload</label>
                                     <div class="custom-file mb-3">
@@ -166,6 +165,13 @@
                                     <img id="preview-image" src="#" alt="preview image" style="max-width: 200px; max-height:200px;">
                                 </div>
                             </div>
+                            </div> 
+                        </div>
+                    
+                        <div class="row">
+                          
+                            
+                          
                         </div>
                     </div>
                 </div>

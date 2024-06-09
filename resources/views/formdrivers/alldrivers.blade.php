@@ -39,13 +39,13 @@
                                             @foreach ($alldrivers as $drivers )
                                             <tr>
                                                 <td hidden class="id">{{ $drivers->id }}</td>
-                                                <td>{{ $drivers->registration_number }}</td>
-                                                <td>{{ $drivers->last_name }}</td>
-                                                <td>{{ $drivers->first_name}}</td>
-                                                <td>{{ $drivers->Date_de_naissance}}</td>
-                                                <td>{{ $drivers->ID_Number }}</td>
-                                                <td>{{ $drivers->phone }}</td>
-                                                <td>{{ $drivers->type }}</td>
+                                                <td>{{ $drivers->Registration_Number ?? 'N/A' }}</td>
+                                                <td>{{ $drivers->Last_Name  ?? 'N/A'}}</td>
+                                                <td>{{ $drivers->First_Name  ?? 'N/A'}}</td>
+                                                <td>{{ $drivers->Date_of_Birth ?? 'N/A'}}</td>
+                                                <td>{{ $drivers->ID_Number  ?? 'N/A' }}</td>
+                                                <td>{{ $drivers->Phone  ?? 'N/A' }}</td>
+                                                <td>{{ $drivers->type  ??'N/A' }}</td>
 
                                             
                                                 <td class="text-right">

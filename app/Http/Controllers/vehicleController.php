@@ -8,7 +8,7 @@ use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
-
+use Carbon\Carbon;
 
 class vehicleController extends Controller
 {
@@ -44,42 +44,30 @@ class vehicleController extends Controller
         'chassis_number' => 'required|string|max:255',
         'weight' => 'required|string|max:255',
        
-        
+       
           
       ]);
+      $dt       = Carbon::now();
+      $todayDate = $dt->toDayDateTimeString();
 
-      DB::beginTransaction();
-      try {
-        
-         
-        $vehicle = new vehicle;
-        $vehicle->registration_number = $request->registration_number;
-        $vehicle->brand = $request->brand;
-        $vehicle->type = $request->type;
-        $vehicle->category = $request->category;
-      
-        $vehicle->circulation_date = $request->circulation_date;
-        
-        $vehicle->mutation = $request->mutation;
-        $vehicle->validity_date = $request->validity_date;
-        $vehicle->model = $request->model;
-       
-        $vehicle->chassis_number = $request->chassis_number;
-        $vehicle->weight = $request->weight;
-       
-        $vehicle->save();
-        
-          
-          
-          DB::commit();
+    
+        Vehicle::create([
+            'registration_number'  =>$request->registration_number,
+             'brand' => $request->brand,
+             'type'=> $request->type,
+             'category' => $request->category,
+            'circulation_date'=> $request->circulation_date,
+
+            'mutation'=> $request->mutation,
+            'model'=> $request->model,
+            'chassis_number' =>  $request->chassis_number,
+             'weight' => $request->weight,
+
+        ]);
           Toastr::success('Create new vehicle successfully :)','Success');
           return redirect()->route('form/allvehicles/page');
           
-      } catch(\Exception $e) {
-          DB::rollback();
-          Toastr::error('Add vehicle fail :)','Error');
-          return redirect()->back();
-      }
+      
   }
   public function updateVehicule($id)
   {

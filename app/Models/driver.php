@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class driver extends Model
+class Driver extends Model
 {
     use HasFactory;
     protected $table = 'drivers';
     protected $fillable = [
         /*there are 27 here too*/
-        'Name',
+        'Last_Name',
 'First_Name',
 'Date_of_Birth',
 'ID_Number',
@@ -21,7 +21,7 @@ class driver extends Model
 'Nationality',
 'Transport',
 'City',
-'Registration_Number',
+'registration_number',
 'Hire_Date',
 'Departure_Date',
 'Social_Security',

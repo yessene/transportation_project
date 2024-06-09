@@ -53,7 +53,7 @@ Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout
 Route::get('/loginuser', [App\Http\Controllers\Auth\LoginuserController::class, 'loginuser'])->name('loginuser');
 // ------------------------------ register ---------------------------------//
 Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register');
-Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, 'storeUser'])->name('register');
+Route::post('/storeUser', [App\Http\Controllers\Auth\RegisterController::class, 'storeUser'])->name('register_user');
 
 // ----------------------------- forget password ----------------------------//
 Route::get('forget-password', [App\Http\Controllers\Auth\ForgotPasswordController::class, 'getEmail'])->name('forget-password');
@@ -98,7 +98,7 @@ Route::get('form/viewclient/{id}', [App\Http\Controllers\ClientController::class
 // ----------------------------- drivers -----------------------------//
 Route::get('form/alldrivers/page', [App\Http\Controllers\driverController::class, 'alldrivers'])->middleware('auth')->name('form/alldrivers/page');
 Route::get('form/adddriver/page', [App\Http\Controllers\driverController::class, 'adddriver'])->middleware('auth')->name('form/adddriver/page');
-Route::post('form/adddriver/save', [App\Http\Controllers\driverController::class, 'savedriver'])->middleware('auth')->name('form/adddriver/save');
+Route::post('form/adddriver/save', [App\Http\Controllers\driverController::class, 'saveDriver'])->middleware('auth')->name('form/adddriver/save');
 Route::get('form/driver/edit/{id}', [App\Http\Controllers\driverController::class, 'updatedriver'])->middleware('auth');
 Route::put('form/driver/update/{id}', [App\Http\Controllers\driverController::class, 'updateRecord'])->middleware('auth')->name('form/driver/update');
 Route::post('form/driver/delete', [App\Http\Controllers\driverController::class, 'deleteRecord'])->middleware('auth')->name('form/driver/delete');

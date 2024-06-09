@@ -25,6 +25,11 @@
                                             <label >registration_number</label>
                                             <span class="required-field text-danger">*</span>
                                             <input type="text" class="form-control @error('registration_number') is-invalid @enderror" id="registration_number" name="registration_number" value="{{ old('registration_number') }}">
+                                            @error('password')
+            <span role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -35,6 +40,11 @@
                                                 <input type="text" class="form-control datetimepicker @error('circulation_date') is-invalid @enderror" name="circulation_date" value="{{ old('circulation_date') }}"> 
                                             </div>
                                          </div>
+                                         @error('password')
+            <span role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
                                     </div>
                                    
                                     <div class="col-md-4">
@@ -44,14 +54,25 @@
 
                                             <div class="cal-icon">
                                                 <input type="text" class="form-control datetimepicker @error('mutation') is-invalid @enderror" name="mutation" value="{{ old('mutation') }}"> 
-                                            </div>                                         </div>
+                                            </div>    
+                                            @error('password')
+            <span role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror                                     </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>validity_date</label>
                                             <div class="cal-icon">
                                                 <input type="text" class="form-control datetimepicker @error('validity_date') is-invalid @enderror" name="validity_date" value="{{ old('validity_date') }}"> 
-                                            </div>                                          </div>
+                                            </div>   
+                                        
+                                            @error('password')
+            <span role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror</div>
                                     </div>
                                    
                                     <div class="col-md-4">
@@ -61,6 +82,11 @@
 
                                             <input type="text" class="form-control @error('brand') is-invalid @enderror" id="brand" name="brand" value="{{ old('brand') }}">
                                         </div>
+                                        @error('password')
+            <span role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
@@ -69,6 +95,11 @@
 
                                             <input type="text" class="form-control @error('type') is-invalid @enderror" id="type" name="type" value="{{ old('type') }}">
                                         </div>
+                                        @error('password')
+            <span role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
@@ -84,6 +115,11 @@
                                                 <option value="tractor" {{ old('category') === 'tracteur' ? 'selected' : '' }}>tractor</option>
                                             </select>
                                         </div>
+                                        @error('password')
+            <span role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
                                     </div>
                                     
                                     <div class="col-md-4">
@@ -93,6 +129,11 @@
 
                                             <input type="text" class="form-control @error('model') is-invalid @enderror" id="model" name="model" value="{{ old('model') }}">
                                         </div>
+                                        @error('password')
+            <span role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
                                     </div>
                                     
                                     
@@ -103,6 +144,11 @@
 
                                             <input type="text" class="form-control @error('chassis_number') is-invalid @enderror" id="chassis_number" name="chassis_number" value="{{ old('chassis_number') }}">
                                         </div>
+                                        @error('password')
+            <span role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
                                     </div>
                                     
                                     <div class="col-md-4">
@@ -112,10 +158,13 @@
 
                                             <input type="number" class="form-control @error('weight') is-invalid @enderror" id="weight" name="weight" value="{{ old('weight') }}">
                                         </div>
+                                        @error('password')
+            <span role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
                                     </div>
-                                    
-
-                                    
+                                
                                 
                                     
                                 </div>

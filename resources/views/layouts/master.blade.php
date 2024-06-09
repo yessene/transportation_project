@@ -298,7 +298,41 @@
 };
     </script>
 
+<script>
+    document.getElementById('registrationForm').addEventListener('submit', function(event) {
+        var password = document.getElementById('password').value;
+        var confirmPassword = document.getElementById('password_confirmation').value;
 
+        // Check if password meets validation conditions
+        if (password.length < 8) {
+            showAlert('Password must be at least 8 characters long.', 'red');
+                        event.preventDefault(); // Prevent form submission
+            return;
+        }
+
+        // Check if password and confirm password match
+        if (password !== confirmPassword) {
+            showAlert('Password and Confirm Password must match.',"red");
+            event.preventDefault(); // Prevent form submission
+            return;
+        }
+    });
+
+    function showAlert(message, color) {
+        var alertBox = document.createElement('div');
+        alertBox.style.backgroundColor = color; // Set background color
+        alertBox.style.color =#F6F4F3; // Set text color
+        alertBox.style.padding = '10px';
+        alertBox.style.marginBottom = '10px';
+        alertBox.style.borderRadius = '5px';
+        alertBox.textContent = message;
+        document.body.appendChild(alertBox);
+
+        setTimeout(function() {
+            alertBox.style.display = 'none';
+        }, 3000); // Hide alert after 3 seconds
+    }
+</script>
 
     @yield('script')
 

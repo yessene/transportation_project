@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\driver;
+use App\Models\Driver;
 
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
@@ -18,9 +18,9 @@ class DriverController extends Controller
         $alldrivers = DB::table('drivers')->get();
         return view('formdrivers.alldrivers', compact('alldrivers'));
     }
-    public function addDriver()
+    public function adddriver()
     {
-        return view('formdrivers.adddrivers');
+        return view('formdrivers.adddriver');
     }
     public function saveDriver(Request $request)
     {
@@ -36,8 +36,7 @@ class DriverController extends Controller
             'Address' => 'nullable|string|max:255',
             'Transport' => 'nullable|string|max:255',
             'City' => 'nullable|string|max:255',
-            'registration_Number' => 'required|string|max:255',
-            'Hire_Date' => 'nullable|string|max:255',
+            'registration_number' => 'required|string|max:255',
             'Departure_Date' => 'nullable|string|max:255',
             'Social_Security' => 'nullable|string|max:255',
             'Marital_Status' => 'nullable|string|max:255',
@@ -46,45 +45,28 @@ class DriverController extends Controller
             
 
         ]);
-        DB::beginTransaction();
-        try {
+      
 
-            $driver = new driver;
-$driver->Last_Name = $request->input('Name');
-$driver->First_Name = $request->input('First_Name');
-$driver->Date_of_Birth = $request->input('Date_of_Birth');
-$driver->ID_Number = $request->input('ID_Number');
-$driver->Phone = $request->input('Phone');
-$driver->Gender = $request->input('Gender');
-$driver->Address = $request->input('Address');
-$driver->Transport = $request->input('Transport');
-$driver->City = $request->input('City');
-$driver->registration_Number = $request->input('registration_Number');
-$driver->Hire_Date = $request->input('Hire_Date');
-$driver->Departure_Date = $request->input('Departure_Date');
-$driver->Social_Security = $request->input('Social_Security');
-$driver->Marital_Status = $request->input('Marital_Status');
-$driver->Type = $request->input('Type');
-
-            if($request->hasFile('image')) {
-                $file = $request->file('image');
-                $filename = time().'-'.$file->getClientOriginalName();
-                $file->move(public_path('images'), $filename);  // you might need to create a directory "images" under public
-        
-                $driver->image = $filename;
-            }
-
-            $driver->save();
-
-            DB::commit();
-            Toastr::success('Successful creation of the new driver:)', 'Success');
-            return redirect()->route('form/alldrivers/page');
-        } catch (\Exception $e) {
-            DB::rollback();
-
-            Toastr::error(' Failed to add a driver:)' .$e->getMessage(), 'Error');
-            return redirect()->back();
-        }
+Driver::create([
+    'Last_Name' =>  $request->Last_Name,
+    'First_Name' => $request->First_Name,
+    'Date_of_Birth' => $request->Date_of_Birth,
+    'ID_Number' =>$request->ID_Number,
+    'Phone' => $request->Phone,
+    'Gender' =>$request->Gender,
+    'Address' => $request->Address,
+    'Transport' => $request->Transport,
+    'City' => $request->City,
+    'registration_number' =>  $request->registration_number,
+    'Departure_Date' =>$request->Departure_Date,
+    'Social_Security' => $request->Social_Security,
+    'Marital_Status' =>$request->Marital_Status,
+    'Type' => $request->Type,
+    'Image' =>$request->file('image'),
+]);
+Toastr::success('Successful creation of the new driver:)', 'Success');
+return redirect()->route('form/alldrivers/page');
+       
     }
     public function updatedriver($id)
     {
