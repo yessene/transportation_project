@@ -57,7 +57,7 @@
                 <li class="nav-item dropdown noti-dropdown">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                         <i class="fe fe-bell"></i>
-                        <span class="badge badge-pill">{{ count($expiredvehicles) + count($arrivedtravels) }}</span>
+
                     </a>
                     <div class="dropdown-menu notifications">
                         <div class="topnav-dropdown-header">
@@ -65,45 +65,9 @@
                             <a href="javascript:void(0)" class="clear-noti"> Clear All </a>
                         </div>
                         <div class="noti-content">
-                            <ul class="notification-list">
-                                @foreach ($expiredvehicles as $vehicle)
-                                    <li class="notification-message">
-                                        <a href="#">
-                                            <div class="media">
-                                                <div class="media-body">
-                                                    <p class="noti-details">
-                                                        the vehicle {{ $vehicle->registration_number }} has passed its validity date!
-                                                    </p>
-                                                    <p class="noti-time">
-                                                        <span class="notification-time">
-                                                            {{ \Carbon\Carbon::createFromFormat('d/m/Y', $vehicle->validite_date)->startOfDay()->diffForHumans(null, true) }}
-                                                        </span>                                                    </p>
-                                                    
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                @endforeach
-                                @foreach ($arrivedtravels as $travel)
-    <li class="notification-message">
-        <a href="#">
-            <div class="media">
-                <div class="media-body">
-                    <p class="noti-details">
-                        the travel {{ $travel->id }} has arrived to its destination .
-                    </p>
-                    <p class="noti-time">
-                        <span class="notification-time">
-                            {{ \Carbon\Carbon::createFromFormat('d/m/Y', $travel->date_arrivee)->startOfDay()->diffForHumans(null, true) }}
-                        </span>
-                    </p>
-                    
-                </div>
-            </div>
-        </a>
-    </li>
-@endforeach
-                            </ul>
+                            
+                               
+
                         </div>
                         <div class="topnav-dropdown-footer">
                             <a href="#">View all Notifications</a>
@@ -143,24 +107,19 @@
                 <div id="sidebar-menu" class="sidebar-menu">
                     <ul>
                         <li class=""> <a href="{{ route('home') }}"><i class="fas fa-tachometer-alt"></i>
-                                <span>Dashboard</span></a> </li>
+                                <span></span></a> </li>
                         <li class="list-divider"></li>
 
                         <li class="vehicle-submenu">
                             <a href="{{ route('form/allvehicles/page') }}"><i class="fas fa-car"></i> <span>
                                     vehicles </span></a>
                         </li>
-                        @if (auth()->check() && auth()->user()->role === 'admin')
-                        <li class="driver-submenu">
-                            <a href="{{ route('form/alldrivers/page') }}"><i class="fas fa-user-tie"></i> <span>
-                                    drivers </span></a>
-                        </li>
-                      
+                       
                         <li class="client-submenu">
                             <a href="{{ route('form/allclients/page') }}"><i class="fas fa-address-card"></i> <span>
                                     Clients </span></a>
                         </li>
-                        @endif
+                        
                         <li class="travel-submenu">
                             <a href="{{ route('form/alltravels/page') }}"><i class="fas fa-truck"></i> <span> travels
                                 </span></a>

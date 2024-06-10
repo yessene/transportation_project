@@ -11,7 +11,7 @@
                     <div class="col">
                         <div class="mt-5">
                             <h4 class="card-title float-left mt-2">travels</h4> 
-                            <a href="{{ route('form/addtravel/page') }}" class="btn btn-primary float-right veiwbutton">add travel</a> 
+                            @if (auth()->check() && auth()->user()->role === 'admin')   <a href="{{ route('form/addtravel/page') }}" class="btn btn-primary float-right veiwbutton">add travel</a> @endif
                         </div>
                     </div>
                 </div>

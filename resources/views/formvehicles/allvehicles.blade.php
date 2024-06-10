@@ -8,11 +8,15 @@
                 <div class="content container-fluid">
                     <div class="page-header">
                         <div class="row align-items-center">
+                       
                             <div class="col">
                                 <div class="mt-5">
-                                    <h4 class="card-title float-left mt-2">vehicles</h4> <a href="{{ route('form/addvehicle/page') }}" class="btn btn-primary float-right veiwbutton">add vehicle</a> </div>
+                                    
+                                    <h4 class="card-title float-left mt-2">vehicles</h4>  @if (auth()->check() && auth()->user()->role === 'admin')<a href="{{ route('form/addvehicle/page') }}" class="btn btn-primary float-right veiwbutton">add vehicle</a> @endif </div>
                                 </div>
                             </div>
+                           
+
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
