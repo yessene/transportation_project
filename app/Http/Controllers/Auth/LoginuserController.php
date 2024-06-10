@@ -55,26 +55,39 @@ class LoginuserController extends Controller
     }
 
     public function authenticate(Request $request)
-    {
-        $request->validate([
-            'email' => 'required|string|email',
-            'password' => 'required|string',
-        ]);
+{
+    $request->validate([
+        'email' => 'required|string|email',
+        'password' => 'required|string',
+    ]);
 
-        $email    = $request->email;
-        $password = $request->password;
+    $email = $request->email;
+    $password = $request->password;
 
-        if (Auth::attempt(['email'=>$email,'password'=>$password,'status'=>'Active'])) {
-            Toastr::success('Login successfully :)','Success');
-            return redirect()->intended('homeuser');
-        } elseif (Auth::attempt(['email'=>$email,'password'=>$password,'status'=> null])) {
-            Toastr::success('Login successfully :)','Success');
-            return redirect()->intended('homeuser');
+    // Attempt to authenticate user
+    if (Auth::attempt(['email' => $email, 'password' => $password, 'status' => 'Active'])) {
+        Toastr::success('Login successfully :)', 'Success');
+
+        // Check user role and redirect accordingly
+        if (Auth::user()->role === 'admin') {
+            return redirect()->intended('admin');
         } else {
-            Toastr::error('fail, WRONG USERNAME OR PASSWORD :)','Error');
-            return redirect('login');
+            return redirect()->intended('homeuser');
         }
+    } elseif (Auth::attempt(['email' => $email, 'password' => $password, 'status' => null])) {
+        Toastr::success('Login successfully :)', 'Success');
+
+        // Check user role and redirect accordingly
+        if (Auth::user()->role === 'admin') {
+            return redirect()->intended('admin');
+        } else {
+            return redirect()->intended('homeuser');
+        }
+    } else {
+        Toastr::error('Fail, WRONG USERNAME OR PASSWORD :)', 'Error');
+        return redirect('login');
     }
+}
 
     public function logout()
     {

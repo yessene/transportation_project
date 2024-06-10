@@ -54,8 +54,19 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Date exit</label>
+                                            <span class="required-field text-danger">*</span>
+
                                             <div class="cal-icon">
                                             <input type="text" class="form-control datetimepicker @error('date_exit') is-invalid @enderror" id="date_exit" name="date_exit" value="{{ old('date_exit') }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>departure_date</label>
+                                            
+                                            <div class="cal-icon">
+                                            <input type="text" class="form-control datetimepicker @error('departure_date') is-invalid @enderror" id="departure_date" name="departure_date" value="{{ old('departure_date') }}">
                                             </div>
                                         </div>
                                     </div>
@@ -74,25 +85,15 @@
                                             <input type="number" class="form-control @error('kilometers') is-invalid @enderror" id="kilometers" name="kilometers" value="{{ old('kilometers') }}">
                                         </div>
                                     </div>
-                                    
-                                    </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>sales </label>
                                             <input type="text" class="form-control @error('sales') is-invalid @enderror" id="sales" name="sales" value="{{ old('sales') }}">
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>Observation</label>
-                                            <textarea class="form-control @error('observation') is-invalid @enderror" id="observation" name="observation" rows="3">{{ old('observation') }}</textarea>
-                                        </div>
-                                    </div>
-
-
-
-                                    <!--how hard fields-->
-                                    <div class="col-md-4">
+                                    
+   <!--how hard fields-->
+   <div class="col-md-4">
                                         <div class="form-group">
                                             <label>vehicles</label>
                                             <span class="required-field text-danger">*</span>
@@ -134,6 +135,18 @@
                                         @enderror
                                         </div>
                                     </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Observation</label>
+                                            <textarea class="form-control @error('observation') is-invalid @enderror" id="observation" name="observation" rows="3">{{ old('observation') }}</textarea>
+                                        </div>
+                                    </div>
+                                    </div>
+                                   
+                                   
+
+
+                                 
                                     
                                     </div>
                                 </div>

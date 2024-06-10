@@ -14,7 +14,6 @@ class Driver extends Model
         'Last_Name',
 'First_Name',
 'Date_of_Birth',
-'ID_Number',
 'Phone',
 'Gender',
 'Address',
@@ -28,6 +27,7 @@ class Driver extends Model
 'Marital_Status',
 'Type',
 'Image',
+
 
 
     ];

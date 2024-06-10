@@ -19,7 +19,7 @@ class CreateVehiclesTable extends Migration
             $table->string('brand');
             $table->string('type');
             $table->string('category');
-            $table->string('owner');
+           
             $table->string('circulation_date');
    
             $table->string('mutation');

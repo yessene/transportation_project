@@ -46,7 +46,7 @@
                                             </td>
                                             <td>
                                                 @foreach($travels->drivers as $driver)
-                                                    <a href="{{ url('form/viewdriver/'.$driver->id) }}" target="_blank" style="color: black;">{{ $driver->registration_number  }}</a>
+                                                    <a href="{{ url('form/viewdriver/'.$driver->id) }}" target="_blank" style="color: black;">{{ $driver->Registration_Number }}</a>
                                                     @if (!$loop->last), @endif
                                                 @endforeach
                                             </td>

@@ -122,7 +122,7 @@
                             <div class="avatar avatar-sm"> </div>
                             <div class="user-text">
                                 <h6> {{ Auth::user()->name }}</h6>
-                                <p class="text-muted mb-0">Administrateur</p>
+                                <p class="text-muted mb-0"> {{ Auth::user()->role}}</p>
                             </div>
                         </div>
                         {{-- <a class="dropdown-item" href="{{ route('profile') }}">My Profile</a>  --}}

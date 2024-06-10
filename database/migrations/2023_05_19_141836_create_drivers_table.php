@@ -19,7 +19,6 @@ class CreatedriversTable extends Migration
             $table->string('Last_Name');
             $table->string('First_Name');
             $table->string('Date_of_Birth');
-            $table->string('ID_Number');
             $table->string('Phone')->nullable();
             $table->string('Gender')->nullable();
             $table->string('Address')->nullable();

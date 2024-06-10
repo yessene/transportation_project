@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Driver;
+use Illuminate\Support\Str;
 
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
@@ -30,34 +31,34 @@ class DriverController extends Controller
             'Last_Name' => 'required|string|max:255',
             'First_Name' => 'required|string|max:255',
             'Date_of_Birth' => 'required|string|max:255',
-            'ID_Number' => 'required|string|max:255',
             'Phone' => 'nullable|string|max:255',
             'Gender' => 'nullable|string|max:255',
             'Address' => 'nullable|string|max:255',
             'Transport' => 'nullable|string|max:255',
             'City' => 'nullable|string|max:255',
-            'registration_number' => 'required|string|max:255',
+            'registration_number' => 'nullabe|string|max:255',
             'Departure_Date' => 'nullable|string|max:255',
             'Social_Security' => 'nullable|string|max:255',
             'Marital_Status' => 'nullable|string|max:255',
             'Type' => 'required|string|max:255',
-            'Image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg'
+            'Image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
+           
             
 
         ]);
       
-
+        $registration_number = mt_rand(1, 9999);
 Driver::create([
     'Last_Name' =>  $request->Last_Name,
     'First_Name' => $request->First_Name,
     'Date_of_Birth' => $request->Date_of_Birth,
-    'ID_Number' =>$request->ID_Number,
+  
     'Phone' => $request->Phone,
     'Gender' =>$request->Gender,
     'Address' => $request->Address,
     'Transport' => $request->Transport,
     'City' => $request->City,
-    'registration_number' =>  $request->registration_number,
+    'registration_number' =>$registration_number ,
     'Departure_Date' =>$request->Departure_Date,
     'Social_Security' => $request->Social_Security,
     'Marital_Status' =>$request->Marital_Status,

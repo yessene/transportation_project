@@ -29,7 +29,7 @@ class ClientController extends Controller
 
 
       $request->validate([
-        'society_name' => 'required|string|max:255',
+        'name_society' => 'required|string|max:255',
 'last_name' => 'nullable|string|max:255',
 'first_name' => 'nullable|string|max:255',
 'address' => 'required|string|max:255',
@@ -46,41 +46,26 @@ class ClientController extends Controller
           
       ]);
 
-      DB::beginTransaction();
-      try {
-        
+  Client::create([
 
-        
+'name_society' =>  $request->name_society,
+'last_name' => $request->last_name,
+'first_name' =>  $request->first_name,
+'address' => $request->address,
+'type' => $request->type,
+'email' => $request->email,
+'country' => $request->country,
+'city' => $request->city,
+'code_postal' => $request->code_postal,
+'relation_date' =>  $request->relation_date,
+'notes' => $request->notes,
+'phone1' => $request->phone1,
+'phone2' =>  $request->phone2,
 
-         
-         
-        $client = new Client;
-$client->society_name = $request->society_name;
-$client->last_name = $request->last_name;
-$client->first_name = $request->first_name;
-$client->address = $request->address;
-$client->type = $request->type;
-$client->email = $request->email;
-$client->country = $request->country;
-$client->city = $request->city;
-$client->code_postal = $request->code_postal;
-$client->relation_date = $request->relation_date;
-$client->notes = $request->notes;
-$client->phone1 = $request->phone1;
-$client->phone2 = $request->phone2;
-$client->save();
-
-        
-          
-          DB::commit();
+   ]) ;
           Toastr::success('Create new client successfully :)','Success');
           return redirect()->route('form/allclients/page');
           
-      } catch(\Exception $e) {
-          DB::rollback();
-          Toastr::error('Add Client fail :)','Error');
-          return redirect()->back();
-      }
   }
 
   public function updateClient($id)

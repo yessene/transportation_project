@@ -21,7 +21,7 @@ use App\Models\File;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 
 Route::group(['middleware'=>'auth'],function()
@@ -34,13 +34,20 @@ Route::group(['middleware'=>'auth'],function()
     {
         return view('homeuser');
     });
+
+    Route::get('admin',function()
+    {
+        return view('admin');
+    });
 });
 
 
 Auth::routes();
 
 // -----------------------------home----------------------------------------//
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('auth')->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index_user'])->middleware('auth')->name('home');
+Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->middleware('auth')->name('admin');
+
 Route::get('/homeuser', [App\Http\Controllers\HomeController::class, 'index'])->middleware('auth')->name('homeuser');
 Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->middleware('auth')->name('profile');
 
@@ -88,7 +95,7 @@ Route::get('form/viewvehicle/{id}', [App\Http\Controllers\vehicleController::cla
 // ----------------------------- clients -----------------------------//
 Route::get('form/allclients/page', [App\Http\Controllers\ClientController::class, 'allclients'])->middleware('auth')->name('form/allclients/page');
 Route::get('form/addclient/page', [App\Http\Controllers\ClientController::class, 'addclient'])->middleware('auth')->name('form/addclient/page');
-Route::post('form/addclient/save', [App\Http\Controllers\ClientController::class, 'saveclient'])->middleware('auth')->name('form/addclient/save');
+Route::post('form/addclient/save', [App\Http\Controllers\ClientController::class, 'saveClient'])->middleware('auth')->name('form/addclient/save');
 Route::get('form/client/edit/{id}', [App\Http\Controllers\ClientController::class, 'updateclient'])->middleware('auth');
 Route::put('form/client/update/{id}', [App\Http\Controllers\ClientController::class, 'updateRecord'])->middleware('auth')->name('form/client/update');
 Route::post('form/client/delete', [App\Http\Controllers\ClientController::class, 'deleteRecord'])->middleware('auth')->name('form/client/delete');

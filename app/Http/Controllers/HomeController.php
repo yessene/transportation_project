@@ -40,10 +40,22 @@ class HomeController extends Controller
         $arrivedtravels = travel::whereDate('date_arrivee', '<', $today)->get();
     
 
-        return view('dashboard.home', compact('allvehicles', 'expiredvehicles', 'alltravels', 'alldrivers', 'allClients','arrivedtravels'));
+        return view('dashboard.admin', compact('allvehicles', 'expiredvehicles', 'alltravels', 'alldrivers', 'allClients','arrivedtravels'));
 
     }
 
+    public function index_user()
+    {
+        $allvehicles = DB::table('vehicles')->count();
+        $alltravels = DB::table('travels')->count();
+        $today = now()->startOfDay();
+        $expiredvehicles = vehicle::whereDate('validite_date', '<', $today)->get();
+        $arrivedtravels = travel::whereDate('date_arrivee', '<', $today)->get();
+    
+
+        return view('dashboard.home', compact('allvehicles', 'expiredvehicles', 'alltravels'));
+
+    }
     // profile
     public function profile()
     {

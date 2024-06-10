@@ -23,7 +23,7 @@
                                 <div class="form-group">
                                     <label>Registration_number</label>
                                     <span class="required-field text-danger">*</span>
-                                    <input type="text" class="form-control @error('registration_number') is-invalid @enderror" id="registration_number" name="registration_number" value="{{ old('registration_Number') }}">
+                                    <input type="text" class="form-control" id="registration_number" name="registration_number" value="{{ old('registration_Number') }}" disabled>
                                 </div>
                             </div>
                             <div class="col-lg-4">
@@ -42,13 +42,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                    <label>ID_Number</label>
-                                    <span class="required-field text-danger">*</span>
-                                    <input type="text" class="form-control @error('ID_Number') is-invalid @enderror" name="ID_Number" value="{{ old('ID_Number') }}">
-                                </div>
-                            </div>
+                           
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label>Phone</label>

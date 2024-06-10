@@ -60,21 +60,35 @@ class LoginController extends Controller
             'email' => 'required|string|email',
             'password' => 'required|string',
         ]);
-
-        $email    = $request->email;
+    
+        $email = $request->email;
         $password = $request->password;
-
-        if (Auth::attempt(['email'=>$email,'password'=>$password,'status'=>'Active'])) {
-            Toastr::success('Login successfully :)','Success');
-            return redirect()->intended('home');
-        } elseif (Auth::attempt(['email'=>$email,'password'=>$password,'status'=> null])) {
-            Toastr::success('Login successfully :)','Success');
-            return redirect()->intended('home');
+    
+        // Attempt to authenticate user
+        if (Auth::attempt(['email' => $email, 'password' => $password, 'status' => 'Active'])) {
+            Toastr::success('Login successfully :)', 'Success');
+    
+            // Check user role and redirect accordingly
+            if (Auth::user()->role === 'admin') {
+                return redirect()->intended('admin');
+            } else {
+                return redirect()->intended('home');
+            }
+        } elseif (Auth::attempt(['email' => $email, 'password' => $password, 'status' => null])) {
+            Toastr::success('Login successfully :)', 'Success');
+    
+            // Check user role and redirect accordingly
+            if (Auth::user()->role === 'admin') {
+                return redirect()->intended('admin');
+            } else {
+                return redirect()->intended('home');
+            }
         } else {
-            Toastr::error('fail, WRONG USERNAME OR PASSWORD :)','Error');
+            Toastr::error('Fail, WRONG USERNAME OR PASSWORD :)', 'Error');
             return redirect('login');
         }
     }
+    
 
     public function logout()
     {

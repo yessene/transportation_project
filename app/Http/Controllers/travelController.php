@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\travel;
+use App\Models\Travel;
 use Brian2694\Toastr\Facades\Toastr;
 use DB;
 use Illuminate\Support\Facades\Validator;
@@ -45,51 +45,38 @@ class travelController extends Controller
         'vehicles' => 'required|array|min:1', 
         'drivers' => 'required|array|min:1', 
         'clients' => 'required|array|min:1',
-        'goods' => 'required|array|min:1',
         'con' => 'required|string|max:255',
-        'origin' => 'nullable|string|max:255',
         'destination' => 'nullable|string|max:255',
         'departure_date' => 'nullable|string|max:255',
         'arrival_date' => 'nullable|string|max:255',
         'kilometers' => 'nullable|string|max:255',
-
-        'seals' => 'nullable|string|max:255',
-        'observation' => 'nullable|string|max:255',
+        'sales' => 'nullable|string|max:255',
+        'observation' => 'nullable|string|max:255'
         
       ]);
-      DB::beginTransaction();
-      try {
-        
-        $travel = new travel;
-        $travel->travel_name = $request->travel_name;
-        $travel->con = $request->con;
-        $travel->origin = $request->origin;
-        $travel->destination = $request->destination;
-        $travel->departure_date = $request->departure_date;
-        $travel->arrival_date = $request->arrival_date;
-        $travel->kilometers = $request->kilometers;
-       
-        $travel->seals = $request->seals;
-        $travel->observation = $request->observation;
-        
+   
+      $travel= Travel::create([
+            'travel_name' => $request->travel_name,
+            'con' => $request->con,
+            'destination' => $request->destination,
+            'departure_date' => $request->departure_date,
+            'arrival_date' => $request->arrival_date,
+            'kilometers' =>$request->kilometers,
+            'sales' => $request->sales,
+            'observation' =>$request->observation,  
+           
 
-          $travel->save();
-          // Sync vehicles
+
+        ]);
+
         $travel->vehicles()->sync($request->vehicles);
-        $travel->driverss()->sync($request->drivers); 
+        $travel->drivers()->sync($request->drivers);
         $travel->clients()->sync($request->clients);
-        
-         
-          DB::commit();
+    
           Toastr::success('Create new travel successfully :)','Success');
           return redirect()->route('form/alltravels/page');
           
-      } catch(\Exception $e) {
-          DB::rollback();
-          Log::error($e);
-          Toastr::error('Add travel fail :)','Error');
-          return redirect()->back();
-      }
+      
   }
   public function updatetravel($id)
   {

@@ -107,11 +107,35 @@ body {
     align-items: center;
     justify-content: center;
     width: 512px;
-    height: 420px;
+    height: 700px;
     overflow: hidden;
     z-index: 2;
 }
 
+.form-control {
+    border-radius: unset;
+  }
+
+  select {
+    appearance: none;
+    background-color: white;
+    border: none;
+    padding: 0 5em 0 0;
+    margin: 0;
+    width: 95%;
+    font-family: inherit;
+    position: center;
+   
+    cursor: inherit;
+    line-height: inherit;
+    display: grid;
+    align-items: center;
+  border-radius: 0.25em;
+  padding: 0.40em 0.9em;
+ 
+    z-index: 1;
+    outline: none;
+  }
 .login-container {
     position: absolute;
     left: 4px;

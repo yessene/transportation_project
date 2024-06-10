@@ -19,7 +19,7 @@
         <div class="form-box">
 
             <!------------------- login form -------------------------->
-            <div class="login-container" id="login">
+            <div class="container" id="register">
                 <div class="top">
                     <span>Don't have an account? <a href="#" onclick="register()">Sign Up</a></span>
                     {!! Toastr::message() !!}
@@ -34,6 +34,20 @@
 
                     <i class="fas fa-user white-icon"></i>
                 </div>
+                <div class="form-group row">
+   
+        <select id="role" class="select @error('role') is-invalid @enderror" name="role" required>
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+        </select>
+        
+        @error('role')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+   
+</div>
                 <div class="input-box">
                     <input type="text" class="input-field  form-control  @error('email') is-invalid @enderror"
                         id="email" name="email" placeholder="Username or Email" value="{{ old('email') }}" required

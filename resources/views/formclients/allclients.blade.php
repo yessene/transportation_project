@@ -39,7 +39,7 @@
                                             <tr>
                                                 <td hidden class="id">{{ $clients->id }}</td>
                                                 <td>{{ $clients->name_society }}</td>
-                                                <td>{{ $clients->date_relation }}</td>
+                                                <td>{{ $clients->relation_date }}</td>
                                                 <td>{{ $clients->type}}</td>
                                                 <td>{{ $clients->email }}</td>
                                                 <td>{{ $clients->phone1 }}</td>
